@@ -25,7 +25,7 @@ for index, row in df.iterrows():
 
 print("Dictionary of id-name pairs:", list)
 
-path = "D:/lmao/face-detect/detect-face/dataset/User1/1.1.jpg"
+path = input("Enter the path to your image: ")
 img = cv2.imread(path)
 
 (height, width) = img.shape[:2]
