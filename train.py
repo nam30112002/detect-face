@@ -38,9 +38,16 @@ def getImagesAndLabels(path):
     return faceSamples, ids
 
 
-print("\n [INFO] Training faces. It will take a few seconds. Wait ...")
-faces, ids = getImagesAndLabels(path)
-recognizer.train(faces, np.array(ids))
+def Train():
+    try:
+        faces, ids = getImagesAndLabels(path)
+        recognizer.train(faces, np.array(ids))
 
-# Save the model into trainer/trainer.yml
-recognizer.write('trainer/trainer.yml')
+        # Save the model into trainer/trainer.yml
+        recognizer.write('trainer/trainer.yml')
+        # Trả về một thông báo thành công hoặc giá trị khác để biết rằng quá trình đã hoàn thành
+        return "Model trained successfully"
+    except Exception as e:
+        # Xử lý lỗi ở đây, ví dụ: in ra thông báo lỗi
+        print("An error occurred:", e)
+        return "An error occurred during training"
