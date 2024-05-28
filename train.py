@@ -1,37 +1,46 @@
 import cv2
 import os
 import numpy as np
-# import PIL as Image
 import PIL.Image as Image
 
-path = 'D:/Graduation_thesis_ver2/detect-face/dataset'
+# import PIL as Image
+
+path = 'dataset'
 
 recognizer = cv2.face.LBPHFaceRecognizer_create()
-detector = cv2.CascadeClassifier("C:/Users/nam30/AppData/Local/Programs/Python/Python312/Lib/site-packages/cv2/data/haarcascade_frontalface_default.xml");
+detector = cv2.CascadeClassifier("haarcascade/haarcascade_frontalface_default.xml")
+
 
 def getImagesAndLabels(path):
-        
-    imagePaths = [os.path.join(path,f) for f in os.listdir(path)]     
-    faceSamples=[]
+    imagePaths = []
+    for f in os.listdir(path):
+        if f.endswith('.xls') or f.endswith('.xlsx'):
+            continue
+        if f.endswith('.mp4'):
+            continue
+        for l in os.listdir(os.path.join(path, f)):
+            imagePaths.append(os.path.join(path, f, l))
+
+    faceSamples = []
     ids = []
 
     for imagePath in imagePaths:
 
-        PIL_img = Image.open(imagePath).convert('L') # convert it to grayscale
-        img_numpy = np.array(PIL_img,'uint8')
-
-        id = int(os.path.split(imagePath)[-1].split(".")[1])
+        PIL_img = Image.open(imagePath).convert('L')  # convert it to grayscale
+        img_numpy = np.array(PIL_img, 'uint8')
+        id = int(imagePath.split("\\")[1][-1])
         faces = detector.detectMultiScale(img_numpy)
 
-        for (x,y,w,h) in faces:
-            faceSamples.append(img_numpy[y:y+h,x:x+w])
+        for (x, y, w, h) in faces:
+            faceSamples.append(img_numpy[y:y + h, x:x + w])
             ids.append(id)
 
-    return faceSamples,ids    
+    return faceSamples, ids
 
-print ("\n [INFO] Training faces. It will take a few seconds. Wait ...")
-faces,ids = getImagesAndLabels(path)
+
+print("\n [INFO] Training faces. It will take a few seconds. Wait ...")
+faces, ids = getImagesAndLabels(path)
 recognizer.train(faces, np.array(ids))
 
 # Save the model into trainer/trainer.yml
-recognizer.write('D:/Graduation_thesis_ver2/detect-face/trainer/trainer.yml')
+recognizer.write('trainer/trainer.yml')
