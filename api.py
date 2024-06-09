@@ -26,6 +26,7 @@ def read_excel_to_json(file_path: str) -> Dict[str, Any]:
 async def createImage(name: str = Form(...), idd: str = Form(...), video_file: UploadFile = File(...)):
     # Lưu video vào một tệp tạm thời để xử lý
     video_path = f"temp/{video_file.filename}"
+    os.makedirs("temp", exist_ok=True)
 
     with open(video_path, "wb") as buffer:
         shutil.copyfileobj(video_file.file, buffer)
