@@ -28,7 +28,7 @@ def getImagesAndLabels(path):
 
         PIL_img = Image.open(imagePath).convert('L')  # convert it to grayscale
         img_numpy = np.array(PIL_img, 'uint8')
-        id = int(imagePath.split("\\")[1][-1])
+        id = int(imagePath.split("\\")[-1].split(".")[0])
         faces = detector.detectMultiScale(img_numpy)
 
         for (x, y, w, h) in faces:
@@ -51,3 +51,5 @@ def Train():
         # Xử lý lỗi ở đây, ví dụ: in ra thông báo lỗi
         print("An error occurred:", e)
         return "An error occurred during training"
+
+Train()

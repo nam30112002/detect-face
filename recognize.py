@@ -49,12 +49,13 @@ def recog(path):
         if (confidence < 100):
             name = list[id]
             confidence = "  {0}%".format(round(100 - confidence))
-            result.add(name)
+            result.add((name, id))
 
         cv2.putText(img, str(id), (x+5,y-5), font, 1, (255,255,255), 2)
         cv2.putText(img, str(confidence), (x+5,y+h-5), font, 1, (255,255,0), 1)
 
     cv2.destroyAllWindows()
+    print(result)
     return result
 
-#recog("D:/lmao/detect-face/dataset/User2/2.1.jpg")
+#recog("D:/lmao/detect-face/dataset/User20200400/20200400.1.jpg")
