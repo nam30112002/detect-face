@@ -62,3 +62,4 @@ def faceDetect(video_path, face_id, name):
     cam.release()
     cv2.destroyAllWindows()
 
+#faceDetect("D:\lmao\detect-face\dataset\WIN_20240528_21_58_57_Pro.mp4", 1, "Minh")
