@@ -9,7 +9,18 @@ from recognize import recog
 from train import Train
 from typing import Dict, Any
 import pandas as pd
+from fastapi.middleware.cors import CORSMiddleware
+
 app = FastAPI()
+
+# Thêm CORS middleware vào ứng dụng
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=['*'],  # Cho phép tất cả các nguồn gốc
+    allow_credentials=['*'],  # Cho phép gửi cookie
+    allow_methods=['*'],  # Cho phép tất cả các phương thức HTTP
+    allow_headers=['*'],  # Cho phép tất cả các headers
+)
 
 
 def read_excel_to_json(file_path: str) -> Dict[str, Any]:
