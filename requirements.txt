@@ -1,7 +1,5 @@
 fastapi==0.95.1
 uvicorn==0.22.0
-psycopg2-binary==2.9.6
-opencv-python-headless==4.5.5.64
 deepface==0.0.75
 retinaface==0.0.12
 shutilwhich==1.1.0  # shutil là thư viện chuẩn, nhưng shutilwhich giúp kiểm tra nếu sử dụng trên một số nền tảng
