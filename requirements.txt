@@ -1,21 +1,12 @@
-numpy==1.21.0
+fastapi==0.95.1
+uvicorn==0.22.0
+psycopg2-binary==2.9.6
 opencv-python-headless==4.5.5.64
-dlib==19.22.0
-face_recognition==1.3.0
-Pillow==8.3.1
-scipy==1.7.1
-matplotlib==3.4.3
+deepface==0.0.75
+retinaface==0.0.12
+shutilwhich==1.1.0  # shutil là thư viện chuẩn, nhưng shutilwhich giúp kiểm tra nếu sử dụng trên một số nền tảng
+pydantic==1.10.10  # Được sử dụng bởi FastAPI để xác thực dữ liệu
+typing-extensions==4.5.0  # Được sử dụng bởi FastAPI cho các kiểu dữ liệu mở rộng
 
-# Optional for additional functionalities
-imutils==0.5.4
-tensorflow==2.5.0
-torch==1.9.0
-torchvision==0.10.0
-scikit-learn==0.24.2
-flask==2.0.1
-
-# For working with Jupyter Notebooks
-jupyter==1.0.0
-
-# For logging and debugging
-loguru==0.5.3
+# Optional for environment variables (if needed)
+python-dotenv==1.0.0
