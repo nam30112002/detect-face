@@ -32,14 +32,14 @@ Detect Face là một dự án mã nguồn mở tập trung vào việc nhận d
 
 3. **Chạy chương trình**:
     ```bash
-    python detect_face.py
+    uvicorn newAPI1:app --host 0.0.0.0 --port 8888
     ```
 
 ## Hướng Dẫn Sử Dụng
 
 ### Nhận Diện Khuôn Mặt Từ Hình Ảnh
 
-Bạn có thể nhận diện khuôn mặt từ một hình ảnh bằng cách sử dụng lệnh sau:
+Bạn có thể nhận diện khuôn mặt từ một hình ảnh bằng cách gọi API (sử dụng swagger để thử) từ URI sau:
 
 ```bash
-python detect_face.py --image path/to/your/image.jpg
+http://localhost:8888/docs#
