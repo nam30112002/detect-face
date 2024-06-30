@@ -43,6 +43,6 @@ Bạn có thể nhận diện khuôn mặt từ một hình ảnh bằng cách g
 
 ```bash
 http://localhost:8888/docs#
-
+```
 ## Chú ý
 Dữ liệu ảnh của mỗi cá nhân của được truy xuất trong DB bằng path lưu trong bảng student. Nếu bạn muốn tùy chỉnh, hãy thiết lập lại đường dẫn DB.
